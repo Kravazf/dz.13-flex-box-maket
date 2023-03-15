@@ -20,19 +20,43 @@ body {
 
 a {
     color: var(--color);
-}
-
-li>a:hover {
-    box-shadow: rgb(128, 0, 17, .5) 1px 2px 3px 1px;
-    font-weight: 700;
-    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
 }
 
 a:hover {
-    box-shadow: rgb(128, 0, 17, .5) 1px 2px 3px 1px;
-    font-weight: 700;
-    opacity: 0.8;
-}
+    animation: animate 4s linear infinite;
+  }
+   
+  @keyframes animate {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 400%;
+    }
+  }
+   
+  a:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    background: linear-gradient(90deg, #f46f03, #ffffff, #FF9C7D, #e67458);
+    background-size: 200%;
+    opacity: 0;
+    transition: .5s;
+  }
+   
+  a:hover:before {
+    filter: blur(10px);
+    opacity: 1;
+    animation: animate 4s linear infinite;
+  }
 
 .logo-header:first-child a{
     display: block;
@@ -57,7 +81,7 @@ a:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 0;   
+    padding: 24px 0;   
 }
 
 .logo-nav {
@@ -110,19 +134,16 @@ a:hover {
 .btn {
     display: block;
     width: 160px;
-    height: 60px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.5) ;
     background-color: #ffffff;
     font-weight: 700;
     font-size: 16px;
     line-height: calc(60/16);
-    text-align: center;
 }
 
 .btn-litle {
     width: 120px;
-    height: 45px;
     line-height: calc(45/16);
 }
 
@@ -162,11 +183,12 @@ h1 {
 
 .btn-main-top {
     margin-left: -3px;
-    padding: 26px 0 17px 0;
+    padding: 26px 0 14px 0;
 }
 
 .img-main-top {
     padding: 57px 0 0 0;
+    margin-left: -1px;
     max-width: 759px;
     min-height: 529px;
 }
@@ -189,7 +211,7 @@ h1 {
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 74px;
+    margin-bottom: 77px;
     }
 
 .title-company h2 {
@@ -200,9 +222,8 @@ h1 {
 }
 
 .company-list {
-    min-width: 1290px;
-    margin: 0;
-    padding: 0 27px;
+    margin: 0 -21px;
+    padding: 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -212,7 +233,7 @@ h1 {
 
 .company-list>li {
     margin: 0;
-    padding: 0;
+    padding: 0 50px;
 }
 
 .container-control {
@@ -227,6 +248,7 @@ h1 {
 .info-control {
     max-width: 50%;
     padding-right: 10px;
+    margin-top: -17px;
 }
 
 .info-control div+a{
@@ -273,7 +295,7 @@ h1 {
 }
 
 .container-lokalise {
-    padding: 114px 0 69px 0;
+    padding: 112px 0 68px 0;
     background-color: #FFF8E4;
 }
 
@@ -523,7 +545,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 111px 0 163px 0;
-    background: #FF9C7D;
     font-size: 20px;
     line-height: calc(30/20);
     text-align: center;
@@ -653,4 +674,8 @@ h1 {
 
 .fotter-bottom-right p {
     margin: 0;
+}
+
+.menu-footer a {
+    text-decoration: none;
 }
